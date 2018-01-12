@@ -42,3 +42,5 @@ REM md mp3
 REM excute another batch file , will reture back when finish another batch
 call 
 
+REM shift remove the parameter /n position   like shift /2 will remove the second parameter.
+
