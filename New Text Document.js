@@ -23,6 +23,7 @@ In this case, the discussion should not be about agile development – that was 
 In this scenario, a user retrieves data from the database with no locks.
 在此方案中，用户从数据库中检索数据而不加任何锁。
 
+
 He has made progress in every aspect.
 他在各方面都有起色。
 
@@ -37,3 +38,19 @@ He watched her with enormous interest.
 
 I'm happy to address your issues
 很高兴解决你的问题。
+
+What diagnostic data should I analyze?
+我应该分析哪些诊断数据？
+
+Diagnostic tools can help the programmer determine when to use those techniques.
+诊断工具可以帮助程序员确定何时使用那些技巧。
+
+We associate with all sorts of people. 
+我们同各种各样的人有交往    
+
+If you continually question why he included this section at all, then you will be frustrated. 
+如果您不断地询问他究竟为什么要包含此部分，那么您将感到失落。
+
+John chanced upon a former colleague of his at the airport
+约翰在机场偶然碰到一个以前的同事。
+
