@@ -22,3 +22,18 @@ In this case, the discussion should not be about agile development – that was 
 
 In this scenario, a user retrieves data from the database with no locks.
 在此方案中，用户从数据库中检索数据而不加任何锁。
+
+He has made progress in every aspect.
+他在各方面都有起色。
+
+The article takes in every aspect of the labour problem.
+这篇文章涉及了劳工问题的各个方面。
+
+I presume that none of you have that belief.
+我假定你们中没有人有那个信念。
+
+He watched her with enormous interest.
+他怀着巨大的兴趣观察她
+
+I'm happy to address your issues
+很高兴解决你的问题。

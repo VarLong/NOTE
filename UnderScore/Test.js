@@ -40,3 +40,15 @@ console.log(person);
 // 所有的都需要返回true，才会返回true
 const everyT = _.every([true, 1, null, 'yes'], _.identity);
 console.log(everyT);
+
+expands = [{offsetTop: 12}, {offsetTop: 42}, {offsetTop: 62}, {offsetTop: 32}, {offsetTop: 2}];
+newListUnderscro = _.sortBy(expands, "offsetTop");
+
+// newList = newList.sort((element, element2) => {
+//     return element.offsetTop - element2.offsetTop;
+// });
+// console.dir(newList);
+console.dir(expands);
+console.dir(newListUnderscro);
+targetIndex = expands.indexOf(newListUnderscro[1]);
+console.log(targetIndex);
