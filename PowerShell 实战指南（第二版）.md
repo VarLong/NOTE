@@ -14,6 +14,8 @@ Shell是忽略大小写的。
 Get-Service | ConvertTo-HTML | Out-File service.html
 > * "$ConfirmPreference" 当comlet的内部影响级别大于shell的$ConfirmPreference影响级别时， 不管cmdlets要做什么，shell都会进行询问。当cmdlet内部影响小于shell时候不会询问。
 > * PSModulePath 是操作系统中环境变量的一部分， 该路径很重要。通过这个变量， 可以加载位于计算机上的所有模块。
+> * Get-Member 获取cmdlet的属性和方法。
+> * Get-ADCpmouter 获取域中的计算机对象， 需要在Windows Server上并且包含ActiveDirectory模块。
 
 
 ------
@@ -62,12 +64,53 @@ Get-Process | Stop-Process
 
 PowerShell存在两种类型的扩展方式， **模块**和**管理单元**
 
- Get-PSSnapin 获取管理单元， 如果安装了SQL-server 就能拿到SQL-Server的管理单元。
+Get-PSSnapin 获取管理单元， 如果安装了SQL-server 就能拿到SQL-Server的管理单元。
+ 
+ ### 命令冲突和移除扩展
+当两个相同的命令同时加载， 例如Get-User， PowerShell会执行最后一个模块的命令。如果想要执行某一个某块下的命令， 使用MyCollPowerShellSpin\Get-User， 前面是模块单元的名字。增加前缀可以防止冲突。
 
+### 配置脚本：启动shell时候预加载
+在PSModulePath中放进模块。
 
+Windows 本身就是一个面向对象的操作系统。
 
+Unix和Linux从业人员喜欢类似Perl的语言， 因为语言包含丰富的文本解析和文本操作方法。
 
+PowerShell所有的对象来源都只包含属性。 comlet 、.NetFramework等等， 后来的属性是PowerShell中的扩展系统（ETC）添加的。为了保持一致性。
+一个对象除了属性和方法之外， 还有时间， 事件是以对象的方式通知你某些事情发生了。例如一个进程对象，可以在进程结束时触发Exited事件。然后将自己的名利附加到这些事件上。
 
+PowerShell pipeline在最后一个命令执行之前总是传递对象。在最后一个命令执行时， PowerShell将会查看管道中所包含的对象， 并根据不同的配置文件决定哪一个属性呗用于构建输出。
+* PoserShell帮助文件不包含有关对象的属性的信息， 你必须将对象利用管道传输给GM来查看属性列表
+
+### 管道， pipeline
+PowerShell如何传输数据给管道？
+以 Get-Content .\computer.txt | Get-Service 为例
+当Get-Content运行时， 会将计算机的名称放到管道中。 然后PowerShell决定如何将数据结果传递给Get-Service命令，但是PowerShell一次只能使用单个参数来接收传入数据。所以Get-Service必须决定哪个参数接受Get-Content 的结果。这个决定的过程称为  **管道参数绑定**。
+
+1.使用ByValue进行管道参数绑定。 PowerSell会确认result的数据对象类型。然后查看B命令中的哪个参数可以接收经由管道传过来的对象的类型。
+2.使用ByPropertyName 进行管道参数绑定。
+
+（）括号优先执行。
+
+PowerShell的输出可以进行格式化。让输出更美观。
+
+过滤， 
+左过滤，： 左过滤意味着极可能吧过滤条件放置在左侧或者靠近命令行开始的部分， 越早过滤掉不需要的对象就越能减轻其他comdlets命令的工作。
+### 对比操作符：
+-eq： 相等
+-ne： 不等于
+-ge： 大于等于
+-le： 小于等于
+-gt： 大于
+-lt： 小于
+-and
+-or
+powershell用$False 和 $True表示false和true   
+过滤对象的管道， 过滤掉其他信息， 只留下正在运行的服务。
+Get-Server | Where-Object -filter {$_.Status -eq "Running"}
+当你传递多个对象到 Where-Object ， 他会检查每个对象从而进行过滤。
+
+$_, 为占位符， 标识的每次放置的一个对象。是一个特殊的产物。
 
 
 
